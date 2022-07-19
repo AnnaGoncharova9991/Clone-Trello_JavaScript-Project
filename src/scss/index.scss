@@ -1,0 +1,43 @@
+@import "variables.scss";
+@import "mixins.scss";
+@import "fonts.scss";
+@import "components/header.scss";
+@import "components/main-desks.scss";
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    }
+html {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+}
+
+.conteiner {
+    max-width: 1170px;
+    padding: 15px 0;
+    margin: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+}
+
+.wrapper {
+    max-width: 1170px;
+    display: flex;    
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+
+}
+
+.hidden {
+    display: none;
+}
