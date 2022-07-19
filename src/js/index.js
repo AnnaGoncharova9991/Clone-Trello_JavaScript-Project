@@ -1,19 +1,26 @@
 'use strict';
-const TODOS = [
-    {       
-        "id": 1,
-        "userName": 'Ervin Howell',
-        "title": "delectus aut autem",
-        "description": "ije;fahcoujfcuvhfailvhf",
-        "time": "17:30",
-        "completed": false
-      }
+let TODOS = [
+    // {       
+    //     "id": 1,
+    //     "userName": 'Ervin Howell',
+    //     "title": "delectus aut autem",
+    //     "description": "ije;fahcoujfcuvhfailvhf",
+    //     "time": "17:30",
+    //     "completed": false
+    //   }
 ];
 
 
 //Создание часов//
 let clock = document.querySelector('.clock');
 
+function setTimeAtModal() {
+    let date = new Date();
+    let hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+    let min = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
+    return clock.innerHTML = `${hour}:${min}`;
+}
 
 function timeUpdate() {
     let date = new Date();
@@ -88,23 +95,69 @@ const createButton = (text, className) => {
 
 const createTodo = (todo) =>{
     const todoWrapper = document.createElement('div');
-    const todoText = document.createTextNode(todo.description);
-    const edditBtn = createButton ("Eddit", "eddit-todo-btn");
+    const todoHeader = document.createElement('div');
+    const todoTitle = document.createElement('h3');
+    const todoTitleText = document.createTextNode(todo.title);
+    const todoHeaderBtn = document.createElement('div');
+    const editBtn = createButton ("Edit", "edit-btn");
+    const deleteBtn = createButton ("Delete", "delete-btn");  
 
     todoWrapper.className = "todo-wrapper";
     todoWrapper.id = `todo-${todo.id}`;
-    edditBtn.className = "todo-btn eddit";
-    edditBtn.id = `eddit-${todo.id}`;
+    todoWrapper.setAttribute('draggable', true);
 
-    todoWrapper.append(todoText);
-    todoWrapper.append(edditBtn);
-    todoWrapper.append(edditBtn);
+    todoHeader.className = "todo-header";
+    todoTitle.className = "todo-title";
+    todoHeaderBtn.className = "todo-header-btns";
+    editBtn.id = `eddit-${todo.id}`;
+    deleteBtn.id =`delete-${todo.id}`;
 
+    const todoContent = document.createElement('div');
+    const todoDescription = document.createElement('p');
+    const todoDescriptionText = document.createTextNode(todo.description);
+    const arrowBtn = createButton (">", "arrow-btn");
+
+    todoContent.className = "todo-content";
+    todoDescription.className = "todo-description";
+    arrowBtn.className = "arrow-btn";
+    arrowBtn.id = `arrow-${todo.id}`;  
+
+    const todoFooter = document.createElement('div');
+    const todoResponsibleUser = document.createElement('p');
+    const todoResponsibleUserName = document.createTextNode(todo.userName);
+    const todoTime = document.createElement('p');
+    const todoTimeText = document.createTextNode(setTimeAtModal());
+
+    todoFooter.className = "todo-footer";
+    todoResponsibleUser.className = "todo-responsible-user";
+    todoTime.className = "todo-time";
+
+    todoTitle.append(todoTitleText);
+    todoHeaderBtn.append(editBtn);
+    todoHeaderBtn.append(deleteBtn);
+    todoHeader.append(todoTitle);
+    todoHeader.append(todoHeaderBtn); 
+
+    todoDescription.append(todoDescriptionText);  
+    todoContent.append(todoDescription);
+    todoContent.append(arrowBtn);  
+   
+    todoResponsibleUser.append(todoResponsibleUserName);
+    todoTime.append(todoTimeText);
+    todoFooter.append(todoResponsibleUser);
+    todoFooter.append(todoTime);
+
+    todoWrapper.append(todoHeader);
+    todoWrapper.append(todoContent);
+    todoWrapper.append(todoFooter);
+
+    
     return todoWrapper
 }
 
 TODOS.forEach(todo =>{
-    todosWrapper.append(createTodo(todo));     
+    todosWrapper.append(createTodo(todo));
+    localStorage.getItem('todoKey');   
 })
 
 todoTitleInput.addEventListener('change', (e) =>{
@@ -128,11 +181,47 @@ addedConfirmBtn.addEventListener('click',function () {
 
     todos.forEach(todo => {
         todosWrapper.append(todo);
-    })
+    });
+    todos.forEach(el => {
+        const elementId = document.getElementById(`${el.id}`);
+        elementId.ondragstart = drag;
+    });
+    onCancel();
+
 } )
 
+//Реализация Drag & Drop//
 
-//Создание карточки todo//
+
+
+const todoColumn = document.querySelector('.column-todo');
+const inProgressColumn = document.querySelector('.column-progress');
+const doneColumn = document.querySelector('.column-done');
+
+
+todoColumn.ondragover = allowDrop;
+inProgressColumn.ondragover = allowDrop;
+doneColumn.ondragover = allowDrop;
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+  
+function drag(ev) {
+    ev.dataTransfer.setData("id", ev.target.id);
+}
+
+todoColumn.ondrop = drop;
+inProgressColumn.ondrop = drop;
+doneColumn.ondrop = drop;
+  
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("id");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+
 
 
 

@@ -1,84 +1,131 @@
-.wrapper-main-desk{
-    justify-content: space-around;
-     border-radius: 3%;
+.wrapper-main-desk {
+  justify-content: space-around;
+  border-radius: 3%;
 }
 
 .column {
-    display: flex;
-    width: 30%;
-    height: 80vh;
-    border: 1px solid rgb(93, 93, 101);
-    border-radius: 3%;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+  display: flex;
+  width: 30%;
+  height: 80vh;
+  border: 1px solid rgb(93, 93, 101);
+  border-radius: 3%;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 
-    &-title {
+  &-title {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  .todo-tasks {
+    .todos-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+
+      .todo-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
         margin-bottom: 10px;
-        padding: 5px;
-        
-    } 
+        background-color: rgba(82, 135, 82);
+        border-radius: 10%;
 
-    &-btn{
-        width: 100%;
-        margin-bottom: -1px;
+        .todo-header {
+          display: flex;
+          flex-direction:row;
+          justify-content: space-between;
+
+          .todo-title {
+          }
+          .todo-header-btns{
+            .eddit-btn {
+            }
+            .delete-btn {
+            }
+          }
+          
+        }
+        .todo-content {
+          display: flex;
+          flex-direction:row;
+          justify-content: space-between;
+
+          .todo-description {
+            margin-bottom: 10px;
+            align-items: center;
         
+          }
+          .arrow-btn {
+          }
+        }
+
+        .todo-footer {
+          display: flex;
+          flex-direction:row;
+          justify-content: space-between;
+          .todo-responsible-user {
+          }
+          .todo-time {
+          }
+        }
+      }
     }
-   
+  }
+
+  &-btn {
+    width: 100%;
+    margin-bottom: -1px;
+  }
 }
-    
+
 .modal-window-added {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 300px;
-    height: 200px;
-    position: absolute;
-    outline: 1px solid  rgb(93, 93, 101);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 3%;
-    background-color: rgba(196, 228, 196);
-   
-        .text-content {
-            margin-bottom: 20px;
-           
-            #todo-title {
-                width: 180px;
-            }
-            #todo-description{
-                width: 250px;
-                min-height: 70px;
-                max-height: 100px;
-                resize: none;
-            }
-        
-        }
-        .modal-window-btn {
-            display: inline-flex;
-            justify-content: space-between;
-                  
-        .select-button {
-            position: relative;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  outline: 1px solid rgb(93, 93, 101);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 3%;
+  background-color: rgba(196, 228, 196);
 
-            label{
-                position: absolute;
-                }
+  .text-content {
+    margin-bottom: 20px;
 
-            select{
-                width: 150px;
-            }
-
-        }
-        .cancel-button {
-            margin: 0 5px;
-        }
+    #todo-title {
+      width: 180px;
     }
-    
-    
+    #todo-description {
+      width: 250px;
+      min-height: 70px;
+      max-height: 100px;
+      resize: none;
+    }
+  }
+  .modal-window-btn {
+    display: inline-flex;
+    justify-content: space-between;
+
+    .select-button {
+      position: relative;
+
+      label {
+        position: absolute;
+      }
+
+      select {
+        width: 150px;
+      }
+    }
+    .cancel-button {
+      margin: 0 5px;
+    }
+  }
 }
-
-
-

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,14 @@
     <link rel="stylesheet" href="./scss/index.scss">
     <title>Document</title>
 </head>
+
 <body>
     <header class="header">
         <div class="conteiner">
-            <div class="wrapper wrapper-header">   
-                <div class="logo"><p class="logo-text">TRELLO</p></div>
+            <div class="wrapper wrapper-header">
+                <div class="logo">
+                    <p class="logo-text">TRELLO</p>
+                </div>
                 <div class="clock"></div>
             </div>
         </div>
@@ -19,58 +23,63 @@
     <main class="main-desks">
         <div class="conteiner">
             <div class="wrapper wrapper-main-desk">
-                <div class="column column-todo" >
-                        <div class="column-content">
-                            <h2 class="column-title">To Do:</h2>
-                            <div class="todo-tasks" id="todo-tasks"></div>
-                        </div>
-                            <div class="btn">
-                            <button class="column-btn add-todo" id ="add-todo-btn">Add todo</button>
+                <div class="column column-todo">
+                    <div class="column-content">
+                        <h2 class="column-title">To Do:</h2>
+                        <div class="todo-tasks" id="todo-tasks">
+                            <div class="todos-wrapper">
+                                
                             </div>
-                    </div>   
-                     <div class="column column-progress" id="column-progress">
-                        <h2 class="column-title">In Progress:</h2>
-                        <div class="progress-tasks" id ="progress-tasks"></div>
-                    </div>    
-                    <div class="column column-done" id ="column-done">
-                        <div class="column-content">
-                            <h2 class="column-title">Done:</h2>
-                            <div class="Done-tasks" id ="Done-tasks"></div>
-                        </div>                       
-                        <div class="btn">
-                            <button class=" column-btn delet-all" id = "delet-all-btn">Delete all</button>
                         </div>
                     </div>
+                    <div class="btn">
+                        <button class="column-btn add-todo" id="add-todo-btn">Add todo</button>
+                    </div>
+                </div>
+                <div class="column column-progress" id="column-progress">
+                    <h2 class="column-title">In Progress:</h2>
+                    <div class="progress-tasks" id="progress-tasks"></div>
+                </div>
+                <div class="column column-done" id="column-done">
+                    <div class="column-content">
+                        <h2 class="column-title">Done:</h2>
+                        <div class="Done-tasks" id="Done-tasks"></div>
+                    </div>
+                    <div class="btn">
+                        <button class=" column-btn delet-all" id="delet-all-btn">Delete all</button>
+                    </div>
+                </div>
             </div>
             <div class="modal-window-added hidden" id="modal-window-added">
-                    <div class="text-content">
-                        <input type="text" placeholder="Title" id="todo-title"><br></br>
-                        <textarea name="modal-window" id="todo-description"></textarea>
-                    </div>
-                    <div class="modal-window-btn">
-                        <div class="select-button">
-                           <select id="responsible-user">
+                <div class="text-content">
+                    <input type="text" placeholder="Title" id="todo-title"><br></br>
+                    <textarea name="modal-window" id="todo-description"></textarea>
+                </div>
+                <div class="modal-window-btn">
+                    <div class="select-button">
+                        <select id="responsible-user">
                             <option selected disabled>Select user</option>
-                           </select>
-                        </div>
-                        <div class="cancel-button" >
-                            <button type="reset" id="cancel-button">Cancel</button>
-                        </div>
-                        <div class="confirm-button">
-                            <button type="submit" id="confirm-button">Confirm</button>
-                        </div>                   
-    
+                        </select>
                     </div>
-              
-               </select>
+                    <div class="cancel-button">
+                        <button type="reset" id="cancel-button">Cancel</button>
+                    </div>
+                    <div class="confirm-button">
+                        <button type="submit" id="confirm-button">Confirm</button>
+                    </div>
+
+                </div>
+
+                </select>
             </div>
-       </div>
+        </div>
     </main>
-    
 
 
 
 
-  <script src="./js/index.js"></script>
+
+    <script src="./js/index.js"></script>
 </body>
+
 </html>
