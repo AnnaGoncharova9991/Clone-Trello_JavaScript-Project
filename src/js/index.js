@@ -254,3 +254,19 @@ function drop(ev) {
   var data = ev.dataTransfer.getData("id");
   ev.target.appendChild(document.getElementById(data));
 }
+
+
+//Реализация кнопки delet у одного Todo//
+
+todosWrapper.addEventListener('click', (e) => {
+    if (e.target.nodeName === 'BUTTON'){
+        const action = e.target.id.split('-')[0];
+        const todoId = e.target.id.split('-')[1];
+        const todoWrapper = document.getElementById(`todo-${todoId}`);
+
+        if (action === 'delete');{
+            todoWrapper.remove();
+        }
+
+    };
+})
