@@ -1,4 +1,6 @@
 'use strict';
+
+const TODOS_KEY = 'todos';
 let TODOS = [
     // {       
     //     "id": 1,
@@ -172,23 +174,31 @@ ResponsUser.addEventListener('change', (e) =>{
 
 
 const addedConfirmBtn = document.getElementById('confirm-button');
-
 addedConfirmBtn.addEventListener('click',function () {
-    const todos = Object.values(todosWrapper.childNodes);
-    const newTodo = createTodo({id: (new Date).valueOf(), userName: userNameSelect, title: userTitleInput, description: userTodoInput, time:"00:00", completed: false }); 
-    todos.unshift(newTodo);
-    todosWrapper.replaceChildren();
+    if (userTodoInput){
+        const todos = Object.values(todosWrapper.childNodes);
+        const newTodo = createTodo({id: (new Date).valueOf(), userName: userNameSelect, title: userTitleInput, description: userTodoInput, time:"00:00", completed: false }); 
+        // todos.unshift(newTodo);
+        todosWrapper.replaceChildren();
+    
+        todos.forEach(todo => {
+            todosWrapper.append(todo);
+        });
+        todos.forEach(el => {
+            const elementId = document.getElementById(`${el.id}`);
+            elementId.ondragstart = drag;
+        });
 
-    todos.forEach(todo => {
-        todosWrapper.append(todo);
-    });
-    todos.forEach(el => {
-        const elementId = document.getElementById(`${el.id}`);
-        elementId.ondragstart = drag;
-    });
-    onCancel();
-
-} )
+        todoTitleInput.value = '';
+        userTitleInput = '';
+        todoDescriptionInput.value = '';
+        userTodoInput = '';
+        ResponsUser.value = 'Select user';
+        userNameSelect = '';   
+    } else {
+        alert('Please enter a description of the task!')
+    }
+});
 
 //Реализация Drag & Drop//
 
