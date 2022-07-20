@@ -22,7 +22,10 @@
     .todos-wrapper {
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      height: 70vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0px 5px;
 
       .todo-wrapper {
         display: flex;
@@ -30,7 +33,7 @@
         justify-content: space-between;
         padding: 10px;
         margin-bottom: 10px;
-        background-color: rgba(82, 135, 82);
+        background-color: rgb(102, 140, 102);
         border-radius: 10%;
 
         .todo-header {
